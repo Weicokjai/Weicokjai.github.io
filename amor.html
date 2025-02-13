@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Día de San Valentín</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlaza el archivo CSS -->
+</head>
+<body>
+    <header>
+        <h1>❤️ Feliz Día de San Valentín ❤️</h1>
+        <p>Un Día Especial mi Vida</p>
+    </header>
+
+    <div class="gallery">
+        <!-- Columna 1 -->
+        <div class="column">
+            <img src="img/foto1.jpg" alt="Foto 1" onclick="mostrarCuadro('Foto 1: ¡Este es un recuerdo especial! ❤️')">
+            <img src="img/foto2.jpg" alt="Foto 2" onclick="mostrarCuadro('Foto 2: ¡Cuánto amor en esta foto! ❤️')">
+            <img src="img/foto3.jpg" alt="Foto 3" onclick="mostrarCuadro('Foto 3: ¡Momentos inolvidables! ❤️')">
+            <img src="img/foto4.jpg" alt="Foto 4" onclick="mostrarCuadro('Foto 4: ¡Siempre juntos! ❤️')">
+        </div>
+        <!-- Columna 2 -->
+        <div class="column">
+            <img src="img/foto5.jpg" alt="Foto 5" onclick="mostrarCuadro('Foto 5: ¡Qué lindos recuerdos! ❤️')">
+            <img src="img/foto6.jpg" alt="Foto 6" onclick="mostrarCuadro('Foto 6: ¡Mi corazón late por ti! ❤️')">
+            <img src="img/foto7.jpg" alt="Foto 7" onclick="mostrarCuadro('Foto 7: ¡Eres mi todo! ❤️')">
+            <img src="img/foto8.jpg" alt="Foto 8" onclick="mostrarCuadro('Foto 8: ¡Feliz San Valentín, mi amor! ❤️')">
+        </div>
+    </div>
+
+    <footer>
+        <p>Te amo más que a nada en este mundo ❤️</p>
+    </footer>
+
+    <!-- Flores animadas -->
+    <div class="flower left"></div>
+    <div class="flower right"></div>
+
+    <!-- Cuadro de diálogo principal -->
+    <div id="customAlert" class="custom-alert hidden">
+        <div class="custom-alert-content">
+            <span id="alertMessage">Mensaje aquí</span>
+            <button id="closeAlert">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Segundo cuadro de diálogo personalizado -->
+    <div id="confirmationAlert" class="custom-alert hidden">
+        <div class="custom-alert-content">
+            <span>¡CLAVE??:</span>
+            <input type="text" id="confirmationInput" placeholder="">
+            <button id="confirmClose">Confirmar</button>
+        </div>
+    </div>
+
+    <!-- Script para los cuadros de diálogo -->
+    <script>
+        // Función para mostrar el primer cuadro de diálogo
+        function mostrarCuadro(mensaje) {
+            const cuadro = document.getElementById('customAlert');
+            const mensajeElemento = document.getElementById('alertMessage');
+
+            // Actualizar el mensaje
+            mensajeElemento.textContent = mensaje;
+
+            // Mostrar el cuadro
+            cuadro.classList.remove('hidden');
+        }
+
+        // Obtener referencias a los elementos del DOM
+        const cuadroPrincipal = document.getElementById('customAlert');
+        const cuadroConfirmacion = document.getElementById('confirmationAlert');
+        const inputConfirmacion = document.getElementById('confirmationInput');
+        const botonCerrar = document.getElementById('closeAlert');
+        const botonConfirmar = document.getElementById('confirmClose');
+
+        // Evento para el botón "Cerrar" del primer cuadro
+        botonCerrar.onclick = function () {
+            cuadroPrincipal.classList.add('hidden'); // Oculta el primer cuadro
+            cuadroConfirmacion.classList.remove('hidden'); // Muestra el segundo cuadro
+        };
+
+        // Evento para el botón "Confirmar" del segundo cuadro
+        botonConfirmar.onclick = function () {
+            if (inputConfirmacion.value.trim() === 'Luna') {
+                cuadroConfirmacion.classList.add('hidden'); // Cierra el segundo cuadro
+            } else {
+                alert("¡CLAVE??!"); // Mensaje de error
+            }
+        };
+    </script>
+</body>
+</html>
